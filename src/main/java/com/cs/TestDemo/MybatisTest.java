@@ -1,5 +1,7 @@
 package com.cs.TestDemo;
 
+import com.cs.Dao.Impl.UseDaoImpl;
+import com.cs.Dao.UseDao;
 import com.cs.entry.User;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -10,6 +12,7 @@ import org.junit.Test;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -117,5 +120,12 @@ public class MybatisTest {
         System.out.println(user);
         //释放资源
         sqlSession.close();
+        
+    }
+    @Test
+    public void testTraditionDao() throws Exception {
+        UseDao userDao = new UseDaoImpl();
+        List<User> all = userDao.findAll();
+        System.out.println(all);
     }
 }
